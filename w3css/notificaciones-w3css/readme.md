@@ -11,7 +11,7 @@ Caracteristicas:
 - Responsivas
 
 ## Uso
-<hr>
+
 
 ```js
 addNotificacion(<opciones> opciones?);
@@ -19,15 +19,15 @@ addNotificacion(<opciones> opciones?);
 | Opcion         | tipo   | Default                                    | Description                                       |
 | -------------- | ------ | ------------------------------------------ | ------------------------------------------------- |
 | `tipo`         | string | NOTIFICACION.success                       | Indica el color con el se muestra la notificación |
-| `titulo`       | string | `Título`                                   | Minimum size of each element.                     |
-| `mensaje`      | string | `Mensaje`                                  | Maximum size of each element.                     |
+| `titulo`       | string | `Título`                                   | El título de la notificación                      |
+| `mensaje`      | string | `Mensaje`                                  | El mensaje de la notificación                     |
 | `tiempo`       | number | 5000                                       | El tiempo que durara la notificación              |
 | `w3css`        | string | `https://www.w3schools.com/w3css/4/w3.css` | Indica la ubicacion del css w3.css                |
 
 
 
 ### opciones
-<hr>
+
 
 #### Tipo
 
@@ -80,8 +80,8 @@ addNotificacion({
 });
 ```
 
-##Ejemplo
-<hr>
+## Ejemplo
+
 
 ```js
 import { addNotificacion} from "@ssm/notificaciones-w3css";

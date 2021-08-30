@@ -1,6 +1,6 @@
 {
-  "name": "@saulsm/notificaciones-w3css",
-  "version": "1.0.2",
+  "name": "notificaciones-w3css",
+  "version": "1.0.0",
   "description": "Utilizamos w3css para mostrar notificaciones.",
   "main": "notificaciones.js",
   "scripts": {

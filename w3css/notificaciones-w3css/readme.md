@@ -16,13 +16,13 @@ Caracteristicas:
 ```js
 addNotificacion(<opciones> opciones?);
 ```
-| Opcion         | tipo   | Default                                    | Description                                       |
-| -------------- | ------ | ------------------------------------------ | ------------------------------------------------- |
-| `tipo`         | string | NOTIFICACION.success                       | Indica el color con el se muestra la notificación |
-| `titulo`       | string | `Título`                                   | El título de la notificación                      |
-| `mensaje`      | string | `Mensaje`                                  | El mensaje de la notificación                     |
-| `tiempo`       | number | 5000                                       | El tiempo que durara la notificación              |
-| `w3css`        | string | `https://www.w3schools.com/w3css/4/w3.css` | Indica la ubicacion del css w3.css                |
+| Opcion         | tipo   | Description                                       |
+| -------------- | ------ | ------------------------------------------------- |
+| `tipo`         | string | Indica el color con el se muestra la notificación |
+| `titulo`       | string | El título de la notificación                      |
+| `mensaje`      | string | El mensaje de la notificación                     |
+| `tiempo`       | number | El tiempo que durara la notificación              |
+| `w3css`        | string | Indica la ubicacion del css w3.css                |
 
 
 
@@ -61,11 +61,11 @@ addNotificacion({
 
 #### Tiempo
 
-Se utiliza paraindicar cuanto dura la notificación. 
+Se utiliza paraindicar cuanto dura la notificación. Se indica en milisegundos.
 
 ```js
 addNotificacion({
-    titulo: 'Aviso'
+    tiempo: 2000
 });
 ```
 

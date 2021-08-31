@@ -1,0 +1,18 @@
+{
+    "name": "operaciones-archivos",
+    "version": "1.0.0",
+    "description": "Hacer operaciones básicas con archivos y blobs",
+    "main": "operaciones-archivos.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "publicar": "npm publish --access public"
+    },
+    "keywords": [
+      "js",
+      "vanilla",      
+      "blobs"
+    ],
+    "author": "Saúl Salazar Méndez",
+    "license": "(MIT OR Apache-2.0)"
+  }
+  

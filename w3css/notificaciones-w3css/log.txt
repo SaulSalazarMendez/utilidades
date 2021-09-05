@@ -1,0 +1,4 @@
+version 1.0.1
+
+- Se agrega loader que espera a que carge w3css
+- se actualiza la documentación

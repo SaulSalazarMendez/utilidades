@@ -56,7 +56,28 @@ export function addNotificacion(opciones = {}) {
     div.style.minWidth = '200px';    
     div.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="${_opciones.w3css}">
-        <div class="w3-panel w3-card-4 w3-display-container  ${_opciones.tipo}">
+        <style>
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-radius: 40%;
+            border-top: 4px solid blue;            
+            width: 30px;
+            height: 30px;         
+            animation: spin 1s linear infinite;
+        }
+        div#cargando{
+            padding-left: calc(50% - 15px);
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        </style>        
+        <div id ="cargando">
+        <div class="loader" title="cargando"></div>
+        </div>
+        <div class="w3-panel w3-card-4 w3-display-container  ${_opciones.tipo}" id="contenido" style="display: none;">
             <span
                 class="w3-button ${_opciones.tipo} w3-large w3-display-topright">&times;</span>
             <h3>${_opciones.titulo}</h3>
@@ -66,7 +87,8 @@ export function addNotificacion(opciones = {}) {
             </div>
             <br>
         </div>   
-    `;
+    `;    
+    
     let span = div.shadowRoot.querySelector('span');    
     let barra = div.shadowRoot.querySelector('[tiempo]');
     let contadorTiempo = 0;
@@ -85,5 +107,13 @@ export function addNotificacion(opciones = {}) {
     if (!notificaciones) {
         notificaciones = addNoticiaciones();
     }
-    notificaciones.appendChild(div);
+    let cargando = div.shadowRoot.querySelector('#cargando');
+    let contenido = div.shadowRoot.querySelector('#contenido');    
+    let link = div.shadowRoot.querySelector('link');
+    //esperamos a que termine la carga
+    link.onload = () => {
+        cargando.remove();
+        contenido.style.display = 'block';
+    };    
+    notificaciones.appendChild(div);  
 }

@@ -71,7 +71,7 @@ addNotificacion({
 
 #### w3css
 
-Se utiliza paraindicar cuanto dura la notificación. 
+Se utiliza paraindicar la ubicacion de la libreria de w3css, por defecto es: *https://www.w3schools.com/w3css/4/w3.css*
 
 ```js
 //supongamos que descargamos la libreria y la tenemos en la carpeta css
@@ -80,16 +80,48 @@ addNotificacion({
 });
 ```
 
+## Notificaciones
+
+Estan definidas en el objecto NOTIFICACION y son las siguientes:
+
+| tipo     | Valor        |
+|--------- |------------- |
+| `SUCCESS`| `w3-green`   |
+| `WARNING`| `w3-yellow`  |
+| `ALERT`  | `w3-red `    |
+
+
+
 ## Ejemplo
 
 
 ```js
-import { addNotificacion} from "@ssm/notificaciones-w3css";
+import { addNotificacion, NOTIFICACION} from "notificaciones-w3css";
 
+addNotificacion({
+    tipo: NOTIFICACION.SUCCESS,
+    titulo: '&#10004; Terminado',
+    mensaje: 'Se termino la tarea correctamente.',
+    tiempo: 2000
+});
+addNotificacion({
+    tipo: NOTIFICACION.WARNING,
+    titulo: ' Cuidado',
+    mensaje: 'No se puede realizar esto.',
+    tiempo: 2000
+});
+addNotificacion({
+    tipo: NOTIFICACION.ALERT,
+    titulo: ' Falló',
+    mensaje: 'El servidor no funciona<br> Favor de contactar al administrador.',
+    tiempo: 2000
+});
+//Puede ocupar una de las clases de color de w3css en el tipo
 addNotificacion({
     tipo: 'w3-indigo',
     titulo: '&#10004; Terminado',
     mensaje: 'Se termino la tarea correctamente.',
     tiempo: 2000
 });
+
 ```

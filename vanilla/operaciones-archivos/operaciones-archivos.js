@@ -30,6 +30,20 @@ export function blobToBase64(blob) {
     });
 }
 /**
+ * Crea un blob a partir de un archivo en base64
+ * @param {Base64} base64 
+ */
+export function base64ToBlob(base64) {
+    return new Promise((resolve, reject) => {
+        fetch(base64)
+        .then(res => res.blob())
+        .then(blob => resolve(blob))
+        .catch(ee => {
+            reject(ee)
+        });
+    });
+}
+/**
  * Lee un archivo de texto de una ruta dada.
  * @param {string} url 
  */

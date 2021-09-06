@@ -81,7 +81,7 @@ descargarArchivo(texto, 'hola.js', 'application/javascript');
 
 Definición de la función
 ```js
-function blobToBase64(<Blob> blob)
+function blobToBase64(<Blob> blob): Promise<string>
 ```
 
 Donde
@@ -100,4 +100,30 @@ fetch('https://picsum.photos/200/300.jpg')
 .then(data => {
     blobToBase64(data).then(base64 => console.log(base64));        
 });
+```
+
+## base64 to blob
+
+Definición de la función
+```js
+function base64ToBlob(<string> base64): Promise<blob>
+```
+
+Donde
+
+| Parametro    | Tipo   | Descripción                  |
+|--------------|--------|----------------------------- |
+| base64       | string | archivo en formato base64    |
+
+
+Uso
+```js
+import { base64ToBlob } from "operaciones-archivos";
+
+let base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
+base64ToBlob(base64).then(
+    blob => {
+        descargarBlob(blob, 'ejemplo.png');
+    }
+)
 ```

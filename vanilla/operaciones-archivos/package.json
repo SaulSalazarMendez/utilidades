@@ -1,6 +1,6 @@
 {
     "name": "operaciones-archivos",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Hacer operaciones básicas con archivos y blobs",
     "main": "operaciones-archivos.js",
     "scripts": {

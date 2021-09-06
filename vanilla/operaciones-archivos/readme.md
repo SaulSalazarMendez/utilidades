@@ -118,7 +118,7 @@ Donde
 
 Uso
 ```js
-import { base64ToBlob } from "operaciones-archivos";
+import { base64ToBlob, descargarBlob } from "operaciones-archivos";
 
 let base64 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==';
 base64ToBlob(base64).then(

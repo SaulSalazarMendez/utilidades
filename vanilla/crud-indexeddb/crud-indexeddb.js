@@ -6,46 +6,53 @@ export class  CrudIndexeddb{
      * @param {{}} tablas Objeto de tablas que se crearan.
      * @param {function} onError callback que regresa TODOS los errores de ejecución
      */
-    constructor(
-        nameDB,
+    constructor() {
+        this.isStart = false;        
+        this.db=null;
+        this.onError = null;
+    }
+
+    init(nameDB,
         versionDB,
         tablas,
-        onError
+        onError = null
     ) {
-        this.isStart = false;
-        this.db=null;
-        this.onError = onError;
-        let obj=this;
-        let indexedDB = window.indexedDB ;
-        let open = indexedDB.open(nameDB, versionDB);
-        this.tablas = tablas;
-        this.folio = Date.now();
-        //si no existe la base o se actualiza la version se crea todo el schema
-        open.onupgradeneeded = () => {
-            let db = open.result;
-            if (tablas){
-                for (const tabla in tablas){
-                    try{
-                        db.createObjectStore(tabla, { keyPath: tablas[tabla].id });
-                    } catch(e) {
-                        console.log(`%cYa existe ${tabla}`, 'color: red');
+        return new Promise( (resolve,reject) => {
+            let obj=this;
+            let indexedDB = window.indexedDB ;
+            let open = indexedDB.open(nameDB, versionDB);
+            this.tablas = tablas;
+            this.folio = Date.now();
+            //si no existe la base o se actualiza la version se crea todo el schema
+            open.onupgradeneeded = () => {
+                let db = open.result;
+                if (tablas){
+                    for (const tabla in tablas){
+                        try{
+                            db.createObjectStore(tabla, { keyPath: tablas[tabla].id });
+                        } catch(e) {
+                            console.log(`%cYa existe ${tabla}`, 'color: red');
+                        }
                     }
                 }
-            }
-            obj.db = open.result;
-        };
-        open.onsuccess = function(){
-            obj.db = open.result;            
-            obj.isStart = true;
-        };
-        open.onerror = (e) => {
-            if (!obj.isStart) {
-                obj.isStart = false;
-            }
-            if (onError) {
-                onError(e);
-            }
-        };
+                obj.db = open.result;
+                resolve(true);
+            };
+            open.onsuccess = function(){
+                obj.db = open.result;
+                resolve(true);
+                obj.isStart = true;
+            };
+            open.onerror = (e) => {
+                if (!obj.isStart) {
+                    obj.isStart = false;
+                }
+                if (onError) {
+                    onError(e);
+                }
+                reject(false);
+            };
+        });
     }
 
     getFolio() {

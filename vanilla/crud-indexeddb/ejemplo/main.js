@@ -1,4 +1,4 @@
-import {IndexeddbApiRest} from '../src/indexeddb-api-rest.js';
+import {CrudIndexeddb} from '../crud-indexeddb.js';
 
 function onError(e) {
 console.log(e);
@@ -15,7 +15,9 @@ const tablas = {
  */
 const version = 1;
 
-let db = new IndexeddbApiRest('test', version, tablas);
+let db = new CrudIndexeddb();
+
+await db.init('test', version, tablas);
 
 
 Vue.component('my-table', {

@@ -31,7 +31,9 @@ const tablas = {
  */
 const version = 1;
 
-let db = new CrudIndexeddb('test', version, tablas, onError);
+let db = new CrudIndexeddb();
+
+await db.init('test', version, tablas, onError);
 
 ```
 ## cdn

@@ -1,6 +1,6 @@
 {
     "name": "crud-indexeddb",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Base para persistir datos en el exporador",
     "main": "crud-indexeddb.js",
     "scripts": {        

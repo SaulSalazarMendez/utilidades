@@ -1,10 +1,10 @@
-# Indexeddb Api Rest
+# Crud Indexeddb
 
-Usar indexeddb como api rest.
+Usar indexeddb con operaciones CRUD.
 
 ## Install
 ```
-npm -i indexeddb-api-rest
+npm -i crud-indexeddb
 ```
 
 
@@ -13,7 +13,7 @@ npm -i indexeddb-api-rest
 Ejemplo de uso:
 
 ```js
-import {IndexeddbApiRest} from 'indexeddb-api-rest';
+import {CrudIndexeddb} from 'crud-indexeddb';
 
 function onError(e) {
     console.log(e);
@@ -31,18 +31,18 @@ const tablas = {
  */
 const version = 1;
 
-let db = new IndexeddbApiRest('test', version, tablas, onError);
+let db = new CrudIndexeddb('test', version, tablas, onError);
 
 ```
 ## cdn
 
 Uso con skypack:
 ```js
-import {IndexeddbApiRest} from 'https://cdn.skypack.dev/indexeddb-api-rest';
+import {CrudIndexeddb} from 'https://cdn.skypack.dev/crud-indexeddb';
 ```
 Uso con unpkg:
 ```js
-import {IndexeddbApiRest} from 'https://unpkg.com/indexeddb-api-rest';
+import {CrudIndexeddb} from 'https://unpkg.com/crud-indexeddb';
 ```
 
 ## Crear datos (post)

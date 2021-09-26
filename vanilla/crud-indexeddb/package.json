@@ -1,8 +1,8 @@
 {
-    "name": "indexeddb-api-rest",
+    "name": "crud-indexeddb",
     "version": "1.0.0",
     "description": "Base para persistir datos en el exporador",
-    "main": "indexeddb-api-rest.js",
+    "main": "crud-indexeddb.js",
     "scripts": {        
         "publicar": "npm publish --access public"
     },

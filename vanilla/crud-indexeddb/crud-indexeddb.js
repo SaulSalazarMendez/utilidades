@@ -1,4 +1,4 @@
-export class  IndexeddbApiRest{    
+export class  CrudIndexeddb{    
     /**
      * Constructor
      * @param {string} nameDB Nombre de la base de datos

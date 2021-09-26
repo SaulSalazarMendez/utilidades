@@ -2,7 +2,7 @@
 
 Usar indexeddb como api rest.
 
-##Install
+## Install
 ```
 npm -i indexeddb-api-rest
 ```
@@ -45,7 +45,7 @@ Uso con unpkg:
 import {IndexeddbApiRest} from 'https://unpkg.com/indexeddb-api-rest';
 ```
 
-##Crear datos (post)
+## Crear datos (post)
 
 Para agregar datos a una tabla necesitamos hacer un post:
 ```ts
@@ -81,7 +81,7 @@ db.post('table1',{nombre: 'Juan', id: 1}, false).then(response => {
 });
 ```
 
-##Leer datos
+## Leer datos
 
 Contamos con dos opciones: get and list.
 
@@ -142,7 +142,7 @@ db.put('persona',{id: 142563652, nombre: 'Juana'}).then(response => {
 });
 ```
  
-##Delete data
+## Delete
 
 All items have a id, so when we delete a item use the id of item for delete it.
 ```ts

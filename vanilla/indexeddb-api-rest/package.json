@@ -2,9 +2,8 @@
     "name": "indexeddb-api-rest",
     "version": "1.0.0",
     "description": "Base para persistir datos en el exporador",
-    "main": "src/indeindexeddb-api-rest.js",
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
+    "main": "indexeddb-api-rest.js",
+    "scripts": {        
         "publicar": "npm publish --access public"
     },
     "keywords": [

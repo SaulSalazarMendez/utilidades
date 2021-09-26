@@ -40,8 +40,8 @@ export class  CrudIndexeddb{
             };
             open.onsuccess = function(){
                 obj.db = open.result;
-                resolve(true);
                 obj.isStart = true;
+                resolve(true);
             };
             open.onerror = (e) => {
                 if (!obj.isStart) {

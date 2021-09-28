@@ -38,10 +38,6 @@ await db.init('test', version, tablas, onError);
 ```
 ## cdn
 
-Uso con skypack:
-```js
-import {CrudIndexeddb} from 'https://cdn.skypack.dev/crud-indexeddb';
-```
 Uso con unpkg:
 ```js
 import {CrudIndexeddb} from 'https://unpkg.com/crud-indexeddb';

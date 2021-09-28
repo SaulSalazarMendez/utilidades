@@ -1,0 +1,19 @@
+{
+    "name": "modales-w3css",
+    "version": "1.0.0",
+    "description": "Utilizamos w3css para mostrar modales.",
+    "main": "modales-w3css.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "publicar": "npm publish --access public"
+    },
+    "keywords": [
+      "js",
+      "vanilla",
+      "w3.css",
+      "modal"
+    ],
+    "author": "Saúl Salazar Méndez",
+    "license": "(MIT OR Apache-2.0)"
+}
+  

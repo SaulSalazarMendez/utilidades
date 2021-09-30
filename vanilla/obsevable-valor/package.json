@@ -1,0 +1,17 @@
+{
+  "name": "observable-valor",
+  "version": "1.0.1",
+  "description": "Observar cambios",
+  "main": "observable-valor.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publicar": "npm publish --access public"
+  },
+  "keywords": [
+    "js",
+    "vanilla",
+    "Observable"    
+  ],
+  "author": "Saúl Salazar Méndez",
+  "license": "(MIT OR Apache-2.0)"
+}

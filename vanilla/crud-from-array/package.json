@@ -1,0 +1,17 @@
+{
+    "name": "crud-from-array",
+    "version": "1.0.1",
+    "description": "Clase para crear crud de un array, fix documentacion",
+    "main": "crud-from-array.js",
+    "scripts": {        
+        "publicar": "npm publish --access public"
+    },
+    "keywords": [
+        "js",
+        "array",
+        "crud",
+        "api"
+    ],
+    "author": "Saúl SM",
+    "license": "(MIT OR Apache-2.0)"
+}

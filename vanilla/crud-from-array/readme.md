@@ -2,17 +2,15 @@
 
 Usamo una clase para hacer operaciones CRUD sobre un array.
 
-## Install
-```
-npm -i crud-from-array
-```
+Esto sirve para hacer mocks o pruebas en formularios.
+
 
 
 ## Setup
 
 
 ```js
-import {CrudFromArray} from 'crud-indexeddb';
+import {CrudFromArray} from 'crud-from-array';
 
 let arregloPersonas = [
     {id: 1, nombre: 'Juan'},

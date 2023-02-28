@@ -45,6 +45,7 @@ Vue.component('my-table', {
         loadPersons() {
             let obj = this;
             this.db.list('personas').then(lista => {
+                console.log(lista);
                 obj.persons = lista;
             });
         },

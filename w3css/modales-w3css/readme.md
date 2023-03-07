@@ -22,7 +22,7 @@ modal.open();
 ```ts
 import {Modal} from 'modales-w3css/modal';
 ```
-
+[Ejemplo](https://saulsalazarmendez.github.io/ejemplos/try-coding/#N4IghgrgLg9gTiAXCAgteIA0IoEsoQA2MSIAKgLcHFYgBmApgMYAWYSAjAGwDsAHBwCsgvny58ALACZsTGABNcAcxKIA2iFq1cAWwAO8KAAJgAWQVhCAXyN04MHUYDkLKFD0BnRAHpvAdwCAOggAOz0AayVAuR1vHQtCBg8AWj8AZiYPDziEpwBuAB0QosTjePlLIwBeIxCGPyNzCsIACgBKQuKQ8stAvGoYaud8oqKewkDcELq4AAkoHUIhgAMigB5FADcjJkIwLKqCkHTkvTA6pZOlOAYGYpAAPiKjIzWWNIeAZQgmJiSPACEa287yeIReaz0DwA4jc7kYYHQoPCpoomGBkR4jB4HAwoCwpkpsT8/lk6EQEXAjAYPPhcJsGIFgVD1t4tg8jEVlp0xglAjA9Hd2n0WEKbliqhzgM8XkZfHpxbgYCFBgwlgAjGBQADP4IAHkZ5AwjHsjOMZS9cHQjC1xfy9NUqjUnH84HAwHAnG0TBbZS85CEcYlAsQlC0nOMdgw3WAKl7On6rL6rTa7QLHc70SE/ntPd7peC/bKA0HGaHw5GsznY2B476k4XLdbbUl7RnnGA/nooB6vT7G0WSzBg+WIwkjJ2GN3ex160UrLOukYQABdKxAA)
 ### Atributos
 
 **innerHtml**: `string` 
@@ -76,11 +76,6 @@ Se usa para definir el radio de los bordos, por defecto es `0`.
 ```js
 modal.opciones.borderRadius = `0 0 10px 10px`;
 ```
-**opciones.borderRadius**: `string`
-Se usa para definir el radio de los bordos, por defecto es `0`.
-```js
-modal.opciones.borderRadius = `0 0 10px 10px`;
-```
 **opciones.ancho**: `string`
 Se usa para definir el ancho de la modal, por defecto es  `50%`.
 ```js
@@ -104,6 +99,34 @@ modal.open().then(res => {
     }
 });
 ```
+
+### Usar formularios
+Puede usar formularios para obtener datos del formulario.
+
+```js
+modal.innerHtml = `
+<div class="w3-panel w3-green">
+  <h3>Dime tu nombre</h3>
+  <form class="w3-container">
+    <p>
+    <div class="w3-margin-top">
+    <label for="nombre"><b>Nombre:</b></label>
+    <input type="text" name="nombre" class="w3-input w3-border"/>
+    </p>
+</form>
+</div> 
+`;
+```
+
+Los elementos del formulario estan contenidos dentro del objecto de respuesta en la llave data.
+
+```js
+modal.open().then(res => {
+    console.log(res.data);
+});
+```
+
+[Ejemplo](https://saulsalazarmendez.github.io/ejemplos/try-coding/#N4IghgrgLg9gTiAXCAgteIA0IoEsoQA2MSIAKgLcHFYgBmApgMYAWYSAjAGwDsAHBwCsXAAwiuggMwjsTGABNcAcxKIA2iFq1cAWwAO8KAAJgAWQVhCAXyN04MHUYDkLKFD0BnRAHpvAdwCAOggAOz0AayVAuR1vHQtCBg8AWj9JJg8POISnAG4AHRDCxON4+UsjAF4jEIY/I3NywgAKAEoCopCyy0C8ahgq5zzCwu7CQNwQ2rgACSgdQkGAA0KAHkUANyMmQjBMyvyQNOS9MFrF46U4BgYikAA+QqMjVZZJe4ARXQYjAhqHABG11W3jejxCz1WdHgjh2ew8ByOkmSchCUDAkwYcEO4OekL0uLx61wWzh+0Oxx0YDgSkmyVgehxTyJuwBDEW0LgiJCgOuONWAPuADleQxECDBSDWezCZDJnpoL8AJ56BiIqAMAAeUEONTAOjVhx5OiBDF1ZIRFOR8sVxwB8HkWMO3llL28BLW3k5OnBIM29yMhSWHVGCUCMFVITavRYt2a1w8VQDwGZz18egTuBgPKM7KM9qgAGeIZqjI6jLsjGNU6iPDBEoFiEp40lAuV0e1ClZO50jCAALpWIA)
 
 ## Modal Aceptar
 

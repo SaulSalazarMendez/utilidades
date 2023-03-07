@@ -65,6 +65,7 @@ export class Modal{
         link.onload = () =>{            
             div.style.display = "block";
         }
+        this.validaForm(div);
     }
     open() {
         let div = document.createElement('div');
@@ -76,14 +77,20 @@ export class Modal{
         const cancelar = div.shadowRoot.querySelector('#cancelar');
         const aceptar = div.shadowRoot.querySelector('#aceptar');
         aceptar.focus();    
-        return this.terminar(cerrar, cancelar, aceptar);        
+        return this.terminar(cerrar, cancelar, aceptar, div);        
     }
 
-    dataAceptar(){
-        return null;
+    dataAceptar(div){
+        if (!div) return null;
+        let form = div.shadowRoot.querySelector('form');
+        if (!form) return null;
+        let data = {};
+        let formData = new FormData(form);
+        formData.forEach((value, key) => { data[key] = value;});
+        return data;
     }
     
-    terminar(cerrar, cancelar, aceptar) {
+    terminar(cerrar, cancelar, aceptar, div = undefined) {
         
         return new Promise((resolve,reject) => {
             if (cerrar){
@@ -100,7 +107,7 @@ export class Modal{
             }
             if(aceptar) {
                 aceptar.addEventListener('click', (e)=>{
-                    const data = this.dataAceptar();
+                    const data = this.dataAceptar(div);
                     this._el.remove();
                     resolve({val: true, op:'aceptar', data: data });
                 });
@@ -139,5 +146,16 @@ export class Modal{
             </div>
         </div>
         `;
+    }
+    /**
+     * Busca formulario y si lo hay agrega ev.preventdefault
+     * @param {HTMLElement} div 
+     */
+    validaForm(div) {
+        let form = div.shadowRoot.querySelector('form');
+        if (!form) return;
+        form.addEventListener('submit', (ev) => {
+            ev.preventDefault();
+        });
     }
 }

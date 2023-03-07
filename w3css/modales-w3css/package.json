@@ -1,6 +1,6 @@
 {
     "name": "modales-w3css",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "description": "Utilizamos w3css para mostrar modales.",
     "main": "modales-w3css.js",
     "scripts": {

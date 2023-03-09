@@ -93,8 +93,17 @@ export class Formulario extends HTMLElement{
     }
     initDatos() {
         let entradas = this.shadowRoot.querySelectorAll('[entrada]');  
-        for(let campo of entradas) {            
-            campo.value = '';
+        for(let campo of entradas) {   
+            //los radios ya furon inicializados         
+            if (campo.type == 'radio'){
+                campo.checked = false;
+            }else 
+                campo.value = '';
+        }
+    }
+    validaRadio(radio, data){
+        if (data[radio.name] == radio.value){
+            radio.checked = true;
         }
     }
     setDatos(data) {
@@ -103,7 +112,10 @@ export class Formulario extends HTMLElement{
             if  (campo.tagName == 'SELECT') {                
                 this.selectOption(campo, data[campo.name]);
             } else {
-                campo.value = data[campo.name];
+                if (campo.type == 'radio')
+                    this.validaRadio(campo, data);
+                else 
+                    campo.value = data[campo.name];
             }
             this.validaInput(campo);
         }

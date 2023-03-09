@@ -38,6 +38,45 @@ function renderOptions(campo) {
 }
 /**
  * 
+ * @param {CampoCatalogo} campo 
+ */
+function renderSelect(campo) {
+    return `
+    <select class="w3-select w3-border" id="${campo.nombre}" name="${campo.nombre}" ${campo.getReglas()} entrada >
+        ${renderOptions(campo)}
+    </select>
+    `;
+}
+function renderRadio(campo) {
+    let radios = ``;
+    for(let opt of campo.lista) {        
+        let activo = '';
+        if (opt.activo == 0) {
+            activo = 'disabled';
+        }
+        radios += `
+        <p><input class="w3-radio" type="radio" name="${campo.nombre}" value="${opt.valor}" ${activo} ${campo.getReglas()} entrada>
+        <label>${opt.etiqueta}</label></p>
+        `;
+    }
+    return radios;
+}
+/**
+ * 
+ * @param {CampoCatalogo} campo 
+ */
+function renderCampoCatalogo(campo){
+    console.log(campo);
+    if (campo.tipo == 'select'){
+        return renderSelect(campo);
+    }
+    if (campo.tipo == 'radio'){
+        return renderRadio(campo)
+    }
+    return '';
+}
+/**
+ * 
  * @param {Campo} campo 
  */
 function renderInput(campo) {
@@ -45,11 +84,7 @@ function renderInput(campo) {
         return `<textarea class="w3-input w3-border" style="resize:none"  id="${campo.nombre}" name="${campo.nombre}" ${campo.getReglas()} entrada></textarea>`;
     }
     if (campo instanceof CampoCatalogo) {
-        return `
-            <select class="w3-select w3-border" id="${campo.nombre}" name="${campo.nombre}" ${campo.getReglas()} entrada>
-                ${renderOptions(campo)}
-            </select>
-        `;
+        return renderCampoCatalogo(campo);
     }
     return `<input type="${campo.tipo}" id="${campo.nombre}" name="${campo.nombre}" ${campo.getReglas()} entrada class="w3-input w3-border w3-theme-l5" placeholder="${campo.placeholder}">`;
 }

@@ -135,7 +135,6 @@ export class CampoCatalogo extends Campo{
          */        
         this.lista = [];
         Object.assign(this, init);
-        this.tipo = 'select';
     }
     /**
      * id

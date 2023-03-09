@@ -1,4 +1,5 @@
-import '../w3css/crudW3.js';
+//import '../w3css/crudW3.js';
+import '../boostrap/crudBo.js';
 
 import { Campo, Modelo, CampoCatalogo } from "../modelo.js";
 
@@ -40,7 +41,7 @@ modelo.campos.push(new Campo({
 modelo.campos.push(new CampoCatalogo({
     nombre: 'sexo', 
     etiqueta: 'sexo', 
-    tipo: 'select', 
+    tipo: 'radio', 
     reglas: 'required',
     ancho: '12',
     lista: [
@@ -65,13 +66,12 @@ modelo.campos.push(new Campo({
 }));
 modelo.setId('fecha');
 
-let crud = document.querySelector('crud-w3css');
+let crud = document.querySelector('crud-bo');
 
 crud.setAcciones({eliminar:false});
 crud.setOnListar((estado) => {     
     return new Promise( (resolve,reject) => {  
         let res = items.slice(estado.offset, estado.offset + estado.limit);
-        console.log(estado, res);
         resolve (
             {
                 total:  items.length,
@@ -92,7 +92,8 @@ crud.setOnVer((id) => {
 });
 
 crud.setOnEditar( (id, datos) => {
-    return new Promise( (resolve, reject) => {        
+    return new Promise( (resolve, reject) => {
+        console.log(datos);        
         let index = items.findIndex(x => x.fecha == id);
         items[index] = Object.assign(items[index], datos );
         resolve(datos);

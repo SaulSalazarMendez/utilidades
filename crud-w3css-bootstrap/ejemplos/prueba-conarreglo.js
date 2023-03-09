@@ -1,4 +1,4 @@
-import '../boostrap/crudBo.js';
+import '../w3css/crudW3.js';
 
 import { Campo, Modelo, CampoCatalogo } from "../modelo.js";
 
@@ -65,7 +65,7 @@ modelo.campos.push(new Campo({
 }));
 modelo.setId('fecha');
 
-let crud = document.querySelector('crud-bo');
+let crud = document.querySelector('crud-w3css');
 
 crud.setAcciones({eliminar:false});
 crud.setOnListar((estado) => {     

@@ -1,3 +1,5 @@
+import { Paginador } from "../base/paginador.js";
+
 const template = /*html*/`
 <div class="w3-bar w3-border">
     <div class="w3-row">
@@ -14,7 +16,7 @@ const template = /*html*/`
 </div>
 `;
 
-class PaginadorW3 extends HTMLElement{
+class PaginadorW3 extends Paginador{
     constructor() {
         super();        
     }    
@@ -32,36 +34,6 @@ class PaginadorW3 extends HTMLElement{
             ${template}
         `;
         this.addEventos();
-    }
-
-    setPagina(pagina) {
-        let pag = this.shadowRoot.querySelector('#pagina');
-        pag.innerHTML = pagina;
-    }
-
-    addEventos() {
-        let sig = this.shadowRoot.querySelector('#siguiente');
-        let ant = this.shadowRoot.querySelector('#anterior');
-        sig.addEventListener('click', ev => {
-            this.despachaEvento('siguiente');
-        });
-        ant.addEventListener('click', ev => {
-            this.despachaEvento('anterior');
-        })
-    }
-
-    despachaEvento(tipo) {
-        let evento = new CustomEvent(tipo, {
-            detail: {
-                tipo: tipo
-            }
-        });
-        this.dispatchEvent(evento);
-    }
-
-    connectedCallback(){
-        this.tema = this.getAttribute('tema');
-        this.render();
     }
 }
 

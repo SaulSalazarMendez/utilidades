@@ -1,3 +1,5 @@
+import { Paginador } from "../base/paginador.js";
+
 const template = /*html*/`
 <ul class="pagination">
     <li class="page-item"><a class="page-link" href="javascript:void(0);" id="anterior">&#10094; </a></li>
@@ -6,10 +8,11 @@ const template = /*html*/`
 </ul>
 `;
 
-class PaginadorBo extends HTMLElement{
-    constructor() {
-        super();        
-    }    
+class PaginadorBo extends Paginador{
+    
+    constructor(){
+        super();
+    }
 
     render() {
         let shadowRoot = this.attachShadow({mode:'open'});
@@ -23,36 +26,6 @@ class PaginadorBo extends HTMLElement{
             ${template}
         `;
         this.addEventos();
-    }
-
-    setPagina(pagina) {
-        let pag = this.shadowRoot.querySelector('#pagina');        
-        pag.innerHTML = pagina;
-    }
-
-    addEventos() {
-        let sig = this.shadowRoot.querySelector('#siguiente');
-        let ant = this.shadowRoot.querySelector('#anterior');
-        sig.addEventListener('click', ev => {
-            this.despachaEvento('siguiente');
-        });
-        ant.addEventListener('click', ev => {
-            this.despachaEvento('anterior');
-        })
-    }
-
-    despachaEvento(tipo) {
-        let evento = new CustomEvent(tipo, {
-            detail: {
-                tipo: tipo
-            }
-        });
-        this.dispatchEvent(evento);
-    }
-
-    connectedCallback(){
-        this.tema = this.getAttribute('tema');
-        this.render();
     }
 }
 

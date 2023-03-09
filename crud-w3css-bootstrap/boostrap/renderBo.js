@@ -84,7 +84,7 @@ function renderInput(campo) {
     if (campo.tipo == 'textarea') {
         return `<textarea rows="3" style="resize:none"  id="${campo.nombre}" name="${campo.nombre}" ${campo.getReglas()} entrada class="form-control"></textarea>`;
     }
-    if (campo instanceof CampoCatalogo) {
+    if (campo.constructor.name === 'CampoCatalogo') {
         return renderCampoCatalogo(campo);
     }
     return `<input type="${campo.tipo}" id="${campo.nombre}" name="${campo.nombre}" ${campo.getReglas()} entrada class="form-control" placeholder="${campo.placeholder}">`;

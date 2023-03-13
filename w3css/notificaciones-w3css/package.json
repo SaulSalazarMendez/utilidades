@@ -1,11 +1,12 @@
 {
   "name": "notificaciones-w3css",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Utilizamos w3css para mostrar notificaciones.",
   "main": "notificaciones.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publicar": "npm publish --access public"
+    "publicar": "npm publish --access public",
+    "build": "tsc notificaciones.ts --target esnext"
   },
   "keywords": [
     "js",

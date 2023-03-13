@@ -6,18 +6,28 @@ export const NOTIFICACION = {
     SUCCESS: 'w3-green',
     WARNING: 'w3-yellow'
 };
+
 /**
  * Define el evento de cerrar para la notificación
- * @param {*} div
- * @param {*} span
- * @param {*} reloj
+ * @param {*} div 
+ * @param {*} span 
+ * @param {*} reloj 
  */
-function addListenerCerrar(div, span, reloj) {
+function addListenerCerrar(div: HTMLElement, span: HTMLElement, reloj: number) {
     span.addEventListener('click', ev => {
         clearInterval(reloj);
         div.remove();
     });
 }
+
+interface iopciones{
+    tipo: string;
+    titulo: string;
+    mensaje: string;
+    tiempo?: number;
+    w3css?: string;
+}
+
 const OPCIONES = {
     tipo: NOTIFICACION.SUCCESS,
     titulo: 'Título',
@@ -25,9 +35,12 @@ const OPCIONES = {
     tiempo: 5000,
     w3css: 'https://www.w3schools.com/w3css/4/w3.css'
 };
-function getOpciones() {
+
+function getOpciones(){
     return JSON.parse(JSON.stringify(OPCIONES));
-}
+} 
+
+
 /**
  * Agrega ewl div contenedor de notificaciones
  */
@@ -45,13 +58,12 @@ function addNoticiaciones() {
  * Estas dependen de w3.css para los estilos.
  * @param {OPCIONES} opciones Define como muestra la notificacion
  */
-export function addNotificacion(opciones = OPCIONES) {
+export function addNotificacion(opciones:iopciones = OPCIONES) {
     let _opciones = Object.assign(getOpciones(), opciones);
     let div = document.createElement('div');
-    div.attachShadow({ mode: 'open' });
+    div.attachShadow({mode: 'open'});
     div.style.minWidth = '200px';
-    if (!div.shadowRoot)
-        return;
+    if (!div.shadowRoot) return;    
     div.shadowRoot.innerHTML = `
         <link rel="stylesheet" href="${_opciones.w3css}">
         <style>
@@ -85,32 +97,31 @@ export function addNotificacion(opciones = OPCIONES) {
             </div>
             <br>
         </div>   
-    `;
-    let span = div.shadowRoot.querySelector('span');
+    `;    
+    
+    let span = div.shadowRoot.querySelector('span');    
     let barra = div.shadowRoot.querySelector('[tiempo]');
-    if (!barra)
-        return;
+    if (!barra) return;
     let contadorTiempo = 0;
     let reloj = setInterval((t) => {
         contadorTiempo += 10;
         if (contadorTiempo > _opciones.tiempo) {
             clearInterval(reloj);
-            div.remove();
-        }
-        else {
-            const ancho = (contadorTiempo / _opciones.tiempo) * 100;
+            div.remove();          
+        } else {
+            const ancho =  (contadorTiempo/_opciones.tiempo)*100;
             // @ts-ignore
-            barra.style.width = ancho + '%';
+            barra.style.width = ancho + '%';            
         }
     }, 10);
-    if (span)
-        addListenerCerrar(div, span, reloj);
+    if(span)
+    addListenerCerrar(div, span, reloj);
     let notificaciones = document.querySelector('#notificaciones-de-la-app');
     if (!notificaciones) {
         notificaciones = addNoticiaciones();
     }
     let cargando = div.shadowRoot.querySelector('#cargando');
-    let contenido = div.shadowRoot.querySelector('#contenido');
+    let contenido = div.shadowRoot.querySelector('#contenido');    
     let link = div.shadowRoot.querySelector('link');
     //esperamos a que termine la carga
     // @ts-ignore
@@ -119,6 +130,6 @@ export function addNotificacion(opciones = OPCIONES) {
         cargando.remove();
         // @ts-ignore
         contenido.style.display = 'block';
-    };
-    notificaciones.appendChild(div);
+    };    
+    notificaciones.appendChild(div);  
 }

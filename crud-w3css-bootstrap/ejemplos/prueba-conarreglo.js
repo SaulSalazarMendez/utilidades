@@ -1,5 +1,5 @@
 //import '../w3css/crudW3.js';
-import '../boostrap/crudBo.js';
+import '../bootstrap/crudBo.js';
 
 import { Campo, Modelo, CampoCatalogo } from "../modelo.js";
 

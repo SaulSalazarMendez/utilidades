@@ -27,7 +27,7 @@ import 'crud-w3css-bootstrap/w3css/crudW3.js';
 ```
 Si es bootstrap
 ```js
-import 'crud-w3css-bootstrap/bootstrap/crudBo';
+import 'crud-w3css-bootstrap/bootstrap/crudBo.js';
 ```
 ### Agregar el webcomponent al html
 Luego tenemos que definir donde va nuestro crud en el html

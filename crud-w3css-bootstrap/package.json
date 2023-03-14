@@ -1,6 +1,6 @@
 {
     "name": "crud-w3css-bootstrap",
-    "version": "1.0.2",
+    "version": "1.0.4",
     "description": "Crear formularios y tablas para trabajar con crud",
     "main": "modelo.js",
     "scripts": {        

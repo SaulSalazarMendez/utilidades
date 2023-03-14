@@ -68,7 +68,6 @@ modelo.setId('fecha');
 
 let crud = document.querySelector('crud-bo');
 
-crud.setAcciones({eliminar:false});
 crud.setOnListar((estado) => {     
     return new Promise( (resolve,reject) => {  
         let res = items.slice(estado.offset, estado.offset + estado.limit);
@@ -106,6 +105,19 @@ crud.setOnAgregar( (datos) => {
         items.push(datos);
         resolve(datos);
     });
+});
+
+crud.setOnEliminar((id)=>{
+	return new Promise((resolve,reject) => {
+        let index = items.findIndex(x => x.fecha == id);
+        let res = confirm("Desea eliminar este registro ?");
+        if (res && index >=0 ){
+            items.splice(index,1);
+            resolve(true);
+        } else {
+            reject(false);
+        }
+	});
 });
 
 crud.setModelo(modelo);

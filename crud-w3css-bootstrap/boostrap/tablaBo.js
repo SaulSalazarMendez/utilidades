@@ -206,16 +206,16 @@ class TablaBo extends Tabla{
     getAcciones(data) {
         let acciones = '';
         if (this.acciones.ver) {
-            acciones = /*html*/`<a href="#" class="btn btn-info btn-sm" id="${data[this.modelo.id]}" tipo="ver">
-            <i class="bi bi-search"></i> Ver</a> `;
+            acciones = /*html*/`<a href="#" class="btn btn-info btn-sm" id="${data[this.modelo.id]}" tipo="ver" title="Ver">
+            <i class="bi bi-search"></i></a> `;
         }
         if (this.acciones.editar) {
-            acciones += /*html*/`<a href="#" class="btn btn-warning btn-sm" id="${data[this.modelo.id]}" tipo="editar">
-            <i class="bi bi-pencil"></i> Editar</a> `;
+            acciones += /*html*/`<a href="#" class="btn btn-warning btn-sm" id="${data[this.modelo.id]}" tipo="editar" title="Editar">
+            <i class="bi bi-pencil"></i></a> `;
         }
         if (this.acciones.eliminar) {
-            acciones += /*html*/`<a href="#" class="btn btn-danger btn-sm" id="${data[this.modelo.id]}" tipo="eliminar">
-            <i class="bi bi-trash"></i> Eliminar</a>`;
+            acciones += /*html*/`<a href="#" class="btn btn-danger btn-sm" id="${data[this.modelo.id]}" tipo="eliminar" title="Eliminar">
+            <i class="bi bi-trash"></i></a>`;
         }
         return acciones;
     }

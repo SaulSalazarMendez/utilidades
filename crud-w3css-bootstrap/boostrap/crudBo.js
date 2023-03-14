@@ -117,6 +117,18 @@ class CrudBo extends HTMLElement {
             this.analizaEvento(ev);
         });
     }
+    eliminaDato(info) {
+        const ev = {
+            detail: {
+                tipo: 'tabla',                
+            }
+        }
+        if (this.onEliminar) {
+            this.onEliminar(info.id).then(()=> {
+                this.analizaEvento(ev);
+            });
+        }
+    }
     /**
      * 
      * @param {CustomEvent} ev 
@@ -125,6 +137,10 @@ class CrudBo extends HTMLElement {
         let info = ev.detail;
         if (info.tipo == 'ver') {
             this.addVer(info);
+        }
+
+        if (info.tipo == 'eliminar') {
+            this.eliminaDato(info);
         }
         if (info.tipo == 'tabla') {
             this.addTabla();

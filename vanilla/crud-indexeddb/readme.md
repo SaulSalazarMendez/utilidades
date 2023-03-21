@@ -46,6 +46,11 @@ Uso con unpkg:
 import {CrudIndexeddb} from 'https://unpkg.com/crud-indexeddb';
 ```
 
+## Changelog
+
+version 1.0.12
+* se arreglo problema para compilar version build con proyectos vite
+
 ## Crear datos (post)
 
 Para agregar datos a una tabla necesitamos hacer un post:

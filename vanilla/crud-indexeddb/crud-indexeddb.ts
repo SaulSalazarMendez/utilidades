@@ -1,10 +1,10 @@
 export class  CrudIndexeddb{
     
-    private isStart = false;
-    private db: IDBDatabase | null;
-    private onError:  (e:any) => void;
-    private folio: number;
-    private tablas: any;
+    isStart = false;
+    db: IDBDatabase | null = null;
+    onError:  any ;
+    folio: number = 0;
+    tablas: any = null;
     
     constructor() {
         this.isStart = false;        
@@ -18,9 +18,9 @@ export class  CrudIndexeddb{
      * @param {{}} tablas Objeto de tablas que se crearan.
      * @param {function} onError callback que regresa TODOS los errores de ejecución
      */
-    init(nameDB,
-        versionDB,
-        tablas,
+    init(nameDB: string,
+        versionDB: number,
+        tablas: any,
         onError: (e: any) => void
     ) {
         this.onError = onError;
@@ -67,7 +67,7 @@ export class  CrudIndexeddb{
         return this.folio;
     }
 
-    copy(json){
+    copy(json: any){
         if (!json) {
             return undefined;
         }
@@ -82,8 +82,8 @@ export class  CrudIndexeddb{
      * @return Una promesa que devuelve el registro agregado o el error
      */
     post(
-        _table,
-        _data,
+        _table: string,
+        _data: any,
         _auto_id = true
     ){
         let obj = this;
@@ -106,7 +106,8 @@ export class  CrudIndexeddb{
                             resolve ( obj.copy(out) ) ;
                         };
                         request.onerror = function(e){
-                            obj.onError({type: 'POST', error: e});
+                            if (obj.onError)
+                                obj.onError({type: 'POST', error: e});
                             reject('Ocurrio un error');
                         };
                         tx.oncomplete = function() {                            
@@ -129,8 +130,8 @@ export class  CrudIndexeddb{
      * @return una promesa que contienen el elemento encontrado o el error
      */
     get(
-        _table,
-        _key
+        _table: string,
+        _key: any
     ){
         let obj = this;
         return new Promise((resolve, reject) =>{
@@ -147,7 +148,8 @@ export class  CrudIndexeddb{
                         resolve ( obj.copy(out) ) ;
                     };
                     request.onerror = function(e) {
-                        obj.onError({type: 'GET', error: e});
+                        if (obj.onError)
+                            obj.onError({type: 'GET', error: e});
                         resolve(null);
                     };
                     tx.oncomplete = function() {
@@ -170,8 +172,8 @@ export class  CrudIndexeddb{
      * @param _data json con los cambios
      */
     put(
-        _table,
-        _data
+        _table: string,
+        _data: any
     ){
         let obj = this;
         return new Promise((resolve, reject) =>{
@@ -192,7 +194,8 @@ export class  CrudIndexeddb{
                         resolve ( obj.copy(out) ) ;
                     };
                     request.onerror = function(e){
-                        obj.onError({type: 'PUT', error: e});
+                        if (obj.onError)
+                            obj.onError({type: 'PUT', error: e});
                         reject('Ocurrio un error');
                     };
                     tx.oncomplete = function() {
@@ -215,8 +218,8 @@ export class  CrudIndexeddb{
      * @return Una promesa que devuelve true si se elimina o false si no se pudo
      */
     delete(
-        _table,
-        _key
+        _table: string,
+        _key: any
     ){
         let obj = this;
         return new Promise((resolve, reject) =>{
@@ -236,8 +239,9 @@ export class  CrudIndexeddb{
                     resolve(out);
                 };
                 requets.onerror = function(e) {
-                    let out = false;                        
-                    obj.onError({type: 'DELETE', error: e});
+                    let out = false;
+                    if (obj.onError)                        
+                        obj.onError({type: 'DELETE', error: e});
                     resolve(out);
                 };
                 tx.oncomplete = function() {
@@ -258,7 +262,7 @@ export class  CrudIndexeddb{
      * @return una promesa que devuelve la lista de elementos de la tabla dada o el error
      */
     list(
-        _table
+        _table: string
     ){
         let obj = this;
         return new Promise(
@@ -283,7 +287,8 @@ export class  CrudIndexeddb{
                         }                        
                     };
                     list.onerror = function (e) {
-                        obj.onError({type: 'LIST', error: e});
+                        if (obj.onError)
+                            obj.onError({type: 'LIST', error: e});
                         reject(e);
                     };
                     tx.oncomplete = function () {
@@ -304,7 +309,7 @@ export class  CrudIndexeddb{
      * @return devuelve una promesa que contienen true o el error.
      */
     clear(
-        _table
+        _table: string
     ){
         let obj = this;        
         return new Promise(
@@ -321,7 +326,8 @@ export class  CrudIndexeddb{
                         resolve(out);
                     };
                     req.onerror = function(e) {
-                        obj.onError({type: 'CLEAR', error: e});
+                        if (obj.onError)
+                            obj.onError({type: 'CLEAR', error: e});
                         reject(e);
                     };
                 }

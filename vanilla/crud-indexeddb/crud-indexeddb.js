@@ -1,6 +1,10 @@
 export class CrudIndexeddb {
+    isStart = false;
+    db = null;
+    onError;
+    folio = 0;
+    tablas = null;
     constructor() {
-        this.isStart = false;
         this.isStart = false;
         this.db = null;
     }
@@ -89,7 +93,8 @@ export class CrudIndexeddb {
                         resolve(obj.copy(out));
                     };
                     request.onerror = function (e) {
-                        obj.onError({ type: 'POST', error: e });
+                        if (obj.onError)
+                            obj.onError({ type: 'POST', error: e });
                         reject('Ocurrio un error');
                     };
                     tx.oncomplete = function () {
@@ -127,7 +132,8 @@ export class CrudIndexeddb {
                         resolve(obj.copy(out));
                     };
                     request.onerror = function (e) {
-                        obj.onError({ type: 'GET', error: e });
+                        if (obj.onError)
+                            obj.onError({ type: 'GET', error: e });
                         resolve(null);
                     };
                     tx.oncomplete = function () {
@@ -168,7 +174,8 @@ export class CrudIndexeddb {
                         resolve(obj.copy(out));
                     };
                     request.onerror = function (e) {
-                        obj.onError({ type: 'PUT', error: e });
+                        if (obj.onError)
+                            obj.onError({ type: 'PUT', error: e });
                         reject('Ocurrio un error');
                     };
                     tx.oncomplete = function () {
@@ -209,7 +216,8 @@ export class CrudIndexeddb {
                 };
                 requets.onerror = function (e) {
                     let out = false;
-                    obj.onError({ type: 'DELETE', error: e });
+                    if (obj.onError)
+                        obj.onError({ type: 'DELETE', error: e });
                     resolve(out);
                 };
                 tx.oncomplete = function () {
@@ -251,7 +259,8 @@ export class CrudIndexeddb {
                     }
                 };
                 list.onerror = function (e) {
-                    obj.onError({ type: 'LIST', error: e });
+                    if (obj.onError)
+                        obj.onError({ type: 'LIST', error: e });
                     reject(e);
                 };
                 tx.oncomplete = function () {
@@ -286,7 +295,8 @@ export class CrudIndexeddb {
                     resolve(out);
                 };
                 req.onerror = function (e) {
-                    obj.onError({ type: 'CLEAR', error: e });
+                    if (obj.onError)
+                        obj.onError({ type: 'CLEAR', error: e });
                     reject(e);
                 };
             }

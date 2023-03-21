@@ -91,7 +91,7 @@ export function addNotificacion(opciones = OPCIONES) {
     if (!barra)
         return;
     let contadorTiempo = 0;
-    let reloj = setInterval((t) => {
+    let reloj = setInterval(() => {
         contadorTiempo += 10;
         if (contadorTiempo > _opciones.tiempo) {
             clearInterval(reloj);

@@ -1,6 +1,6 @@
 {
   "name": "notificaciones-w3css",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Utilizamos w3css para mostrar notificaciones.",
   "main": "notificaciones.js",
   "scripts": {

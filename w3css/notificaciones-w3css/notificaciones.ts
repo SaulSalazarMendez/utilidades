@@ -103,7 +103,7 @@ export function addNotificacion(opciones:iopciones = OPCIONES) {
     let barra = div.shadowRoot.querySelector('[tiempo]');
     if (!barra) return;
     let contadorTiempo = 0;
-    let reloj = setInterval((t) => {
+    let reloj = setInterval(() => {
         contadorTiempo += 10;
         if (contadorTiempo > _opciones.tiempo) {
             clearInterval(reloj);

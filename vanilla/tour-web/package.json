@@ -1,0 +1,17 @@
+{
+    "name": "tour-web",
+    "version": "1.0.1",
+    "description": "Libreria para hacer tour graficos en el explorador",
+    "main": "tour-web.js",
+    "scripts": {        
+        "publicar": "npm publish --access public",
+        "build": "tsc -t esnext tour-web.ts"
+    },
+    "keywords": [
+        "js",
+        "tour",
+        "vanilla"
+    ],
+    "author": "Saúl SM",
+    "license": "(MIT OR Apache-2.0)"
+}

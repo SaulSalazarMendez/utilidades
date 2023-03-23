@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./../tour-web.css">
+</head>
+<body>
+    <div id="content"><h1 id="tour-js">Tour-web</h1>
+        <p>El proposito de esta libreria es </p>
+        <ul>
+        <li>Dar un recorrido en elemntos graficos de una aplicación web</li>
+        </ul>
+        <h2 id="setup">Setup</h2>
+        <p>Importar la clase Tour</p>
+        <pre><code class="language-js">import {Tour} from 'tour-web.js';
+        </code></pre>
+        <p>Crear una instancia de Tour</p>
+        <pre><code class="language-js">const tour = new Tour();
+        </code></pre>
+        <p>Agregar paso al tour</p>
+        <pre><code class="language-js">tour.addPaso({
+            target: '#titulo',
+            contenido: `&lt;p&gt;Titulo de la libreria&lt;/p&gt;`,
+            posicion: 'botton',
+            acciones:[
+                {
+                    texto: 'Siguiente',
+                    accion: tour.siguiente
+                }
+            ]
+        });
+        </code></pre>
+        <p>Iniciar el tour</p>
+        <pre><code class="language-js">tour.inicia();
+        </code></pre>
+        <h2 id="clase-tour">Clase Tour</h2>
+        <p>Esta cuenta con los siguientes metodos</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Método</th>
+        <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody><tr>
+        <td id="addpaso">addPaso(paso: ipaso)</td>
+        <td>Agrega un paso al tour</td>
+        </tr>
+        <tr>
+        <td>inicia</td>
+        <td>Inicia el tour</td>
+        </tr>
+        <tr>
+        <td>siguiente</td>
+        <td>Pasa al siguiente paso del tour. Si es el último paso termina el tour</td>
+        </tr>
+        <tr>
+        <td>atras</td>
+        <td>Retrocede al paso anterior</td>
+        </tr>
+        <tr>
+        <td>cancelar</td>
+        <td>Cancela el tour</td>
+        </tr>
+        </tbody></table>
+        <h2 id="definicion-de-pasoipaso">Definicion de paso(iPaso)</h2>
+        <p>Un  paso esta definido por los siguientes atributos</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Atributo</th>
+        <th>tipo</th>
+        <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody><tr>
+        <td>target</td>
+        <td>string</td>
+        <td>Es el selector al que hace target</td>
+        </tr>
+        <tr>
+        <td>contenido</td>
+        <td>string</td>
+        <td>Es el contenido que se muestra en el paso, este se agrega el innerHTML del paso</td>
+        </tr>
+        <tr>
+        <td>posicion</td>
+        <td>'top' | 'botton'</td>
+        <td>Indica la posicion donde va el paso</td>
+        </tr>
+        <tr>
+        <td>acciones</td>
+        <td id="iaccion">iaccion[]</td>
+        <td>Es un arreglo de acciones</td>
+        </tr>
+        </tbody></table>
+        <h2 id="definición-de-accioniaccion">Definición de accion(iaccion)</h2>
+        <p>Una acción es un boton que se muestra el paso, este tiene un texto y tiene una acción a arealizar.</p>
+        <table>
+        <thead>
+        <tr>
+        <th>Atributo</th>
+        <th>tipo</th>
+        <th>Descripción</th>
+        </tr>
+        </thead>
+        <tbody><tr>
+        <td>texto</td>
+        <td>string</td>
+        <td>Indica el texto del boton</td>
+        </tr>
+        <tr>
+        <td>class</td>
+        <td>string</td>
+        <td>Es la clase del boton</td>
+        </tr>
+        <tr>
+        <td>accion</td>
+        <td>()=&gt;void</td>
+        <td>Es la funcíon que indica lo que se hara cuando se haga click en la accion</td>
+        </tr>
+        </tbody></table>
+        </div>
+
+    <script src="./main.js" type="module"></script>
+</body>
+</html>

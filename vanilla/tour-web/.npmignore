@@ -1,0 +1,5 @@
+.gitignore
+.npmignore
+ejemplos/
+crud-indexeddb_resp.js
+

@@ -45,6 +45,7 @@ Esta cuenta con los siguientes metodos
 | Método| Descripción           |
 |-------|-----------------------|
 |addPaso(paso: ipaso)| Agrega un paso al tour|
+|esActivo| Regresa true si esta activo el tour|
 |inicia| Inicia el tour|
 |siguiente| Pasa al siguiente paso del tour. Si es el último paso termina el tour|
 |atras| Retrocede al paso anterior|
